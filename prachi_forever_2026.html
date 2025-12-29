@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Prachi ❤️ Forever</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+
+body{
+    background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Loader */
+#loader{
+    position:fixed;
+    inset:0;
+    background:black;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    z-index:999;
+}
+
+/* Navbar */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(0,0,0,0.6);
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    padding:15px;
+    z-index:100;
+}
+
+nav button{
+    background:none;
+    border:1px solid pink;
+    color:pink;
+    padding:8px 18px;
+    border-radius:25px;
+    cursor:pointer;
+    transition:.3s;
+}
+nav button:hover{
+    background:pink;
+    color:black;
+}
+
+/* Sections */
+section{
+    min-height:100vh;
+    padding:120px 10%;
+    display:none;
+}
+.active{display:block;}
+
+h1{
+    font-size:48px;
+    color:#ffb6c1;
+    text-shadow:0 0 20px pink;
+}
+
+p{
+    font-size:20px;
+    margin-top:15px;
+    line-height:1.6;
+}
+
+.btn{
+    margin-top:25px;
+    padding:15px 40px;
+    border:none;
+    border-radius:40px;
+    background:linear-gradient(45deg,#ff4b7d,#ff9a9e);
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+/* Cards */
+.card{
+    background:rgba(255,255,255,0.1);
+    padding:25px;
+    border-radius:20px;
+    margin:20px 0;
+    box-shadow:0 0 25px rgba(255,182,193,.3);
+}
+
+/* Floating hearts */
+.heart{
+    position:fixed;
+    bottom:-20px;
+    font-size:25px;
+    animation:float 6s linear infinite;
+}
+@keyframes float{
+    0%{transform:translateY(0);opacity:0}
+    30%{opacity:1}
+    100%{transform:translateY(-120vh);opacity:0}
+}
+
+/* Gallery */
+.gallery img{
+    width:200px;
+    border-radius:20px;
+    margin:10px;
+    box-shadow:0 0 20px pink;
+}
+
+/* Hidden */
+.hidden{display:none;}
+</style>
+</head>
+
+<body>
+
+<div id="loader">Loading something special… ❤️</div>
+
+<nav>
+    <button onclick="show('home')">Home</button>
+    <button onclick="show('journey')">Journey</button>
+    <button onclick="show('shayari')">Shayari</button>
+    <button onclick="show('memories')">Memories</button>
+    <button onclick="show('secret')">Secret</button>
+    <button onclick="show('final')">Final</button>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="active">
+    <h1>Happy New Year 2026 💖</h1>
+    <p>
+        Prachi…  
+        Ye website ek gift nahi,  
+        ye meri feelings ka ek chhota sa universe hai.
+    </p>
+    <button class="btn" onclick="show('journey')">Start Our Journey ✨</button>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey">
+    <h1>Our Little Story 🌙</h1>
+
+    <div class="card">Kuch log achanak zindagi me aate hain… aur sab kuch badal dete hain.</div>
+    <div class="card">Tumhara hona ek sukoon hai — bina wajah, bina shart.</div>
+    <div class="card">Har baat tumse kehna aasaan lagta hai.</div>
+</section>
+
+<!-- SHAYARI -->
+<section id="shayari">
+    <h1>Sirf Tumhare Liye ✨</h1>
+
+    <div class="card">
+        “Tumhari hasi meri sabse pyaari aadat ban chuki hai.”
+    </div>
+
+    <div class="card">
+        “Agar tum saath ho, toh har din ek festival hai.”
+    </div>
+
+    <div class="card">
+        “Main lafzon mein kamzor hoon,  
+        par mehsoos tumhe dil se karta hoon.”
+    </div>
+</section>
+
+<!-- MEMORIES -->
+<section id="memories">
+    <h1>Little Moments 💞</h1>
+    <p>(Yahan tum apni photos add kar sakte ho)</p>
+
+    <div class="gallery">
+        <img src="https://via.placeholder.com/200">
+        <img src="https://via.placeholder.com/200">
+        <img src="https://via.placeholder.com/200">
+    </div>
+</section>
+
+<!-- SECRET -->
+<section id="secret">
+    <h1>Ek Chhupa Hua Raaz 🔐</h1>
+
+    <p>Button dabao…</p>
+    <button class="btn" onclick="reveal()">Open My Heart ❤️</button>
+
+    <div id="secretText" class="card hidden">
+        Prachi…  
+        Tum meri zindagi ka wo hissa ho  
+        jiske bina sab adhoora lagta hai.  
+        Tum ho toh sab kuch hai 💖
+    </div>
+</section>
+
+<!-- FINAL -->
+<section id="final">
+    <h1>Forever ♾️</h1>
+    <p>
+        Agar tum yahan tak aa gayi ho…  
+        toh samajh jao tum mere liye kya ho.
+    </p>
+
+    <p style="margin-top:20px;font-size:22px;">
+        Happy New Year 2026 ❤️  
+        Hamesha khush raho, muskurati raho.
+    </p>
+</section>
+
+<audio id="music" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
+<script>
+function show(id){
+    document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+
+function reveal(){
+    document.getElementById("secretText").classList.remove("hidden");
+}
+
+setTimeout(()=>{
+    document.getElementById("loader").style.display="none";
+},2500);
+
+// hearts
+setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤️";
+    h.style.left=Math.random()*100+"vw";
+    h.style.fontSize=(15+Math.random()*20)+"px";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+},700);
+
+// music auto
+window.onclick=()=>{
+    document.getElementById("music").play();
+};
+</script>
+
+</body>
+</html>
