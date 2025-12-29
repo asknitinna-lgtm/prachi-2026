@@ -3,127 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <title>For Prachi ❤️</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body, html{
-    margin:0; padding:0;
-    width:100%; height:100%;
-    font-family:'Segoe UI',sans-serif;
-    background:#090417;
-    color:white;
-}
-header{
-    text-align:center;
-    padding:20px;
-    font-size:28px;
-    background:linear-gradient(to right, #201a3b, #3b1a40);
-}
-section{
-    padding:15px;
-}
-button{
-    background:#ff2e63;
-    color:white;
-    border:none;
-    padding:12px 30px;
-    font-size:18px;
-    border-radius:30px;
-    margin:10px auto;
-    display:block;
-    cursor:pointer;
-}
-.card{
-    background:rgba(255,255,255,0.1);
-    padding:20px; margin:12px 0;
-    border-radius:20px;
-    font-size:18px;
-}
-iframe{
-    width:100%;
-    height:200px;
-    border:none;
-}
-@media (min-width:600px){
-    iframe{height:300px;}
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:white;overflow-x:hidden;}
+header{text-align:center;padding:20px;font-size:28px;background:linear-gradient(to right,#201a3b,#3b1a40);}
+section{padding:15px; display:none;}
+section.active{display:block;}
+button{background:#ff2e63;color:white;border:none;padding:12px 30px;font-size:18px;border-radius:30px;margin:10px auto;display:block;cursor:pointer;}
+.card{background:rgba(255,255,255,0.1);padding:20px;margin:12px 0;border-radius:20px;font-size:18px;}
+iframe{width:100%;height:200px;border:none;border-radius:15px;}
+@media (min-width:600px){iframe{height:300px;}}
+.heart{position:fixed;bottom:-20px;font-size:25px;animation:float 6s linear infinite;}
+@keyframes float{0%{transform:translateY(0);opacity:0}30%{opacity:1}100%{transform:translateY(-120vh);opacity:0}}
 </style>
 </head>
-
 <body>
 
 <header>✨ Special New Year for Prachi ✨</header>
 
 <!-- Music Embed -->
-<section id="music">
-    <iframe src="https://www.youtube.com/embed/1E-ZSGWK6g0?autoplay=1&loop=1&playlist=1E-ZSGWK6g0&controls=0&modestbranding=1&rel=0" allow="autoplay; encrypted-media"></iframe>
+<section id="music" class="active">
+    <iframe src="https://www.youtube.com/embed/rBiblCpTw7s?autoplay=1&loop=1&playlist=rBiblCpTw7s&controls=0&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </section>
 
+<!-- Intro -->
 <section id="intro">
     <div class="card">
-        Prachi ❤️  
-        Ye website uss gaane ke saath hai jo hamesha bajta rahe — *Aaj Se Teri* 🎶  
-        Aur har page me tumhari liye kuch special surprise hai.
+        Prachi ❤️<br>
+        Ye website uss gaane ke saath hai jo hamesha bajta rahe — <b>Aaj Se Teri</b> 🎶<br>
+        Har section me tumhare liye kuch special surprise hai.
     </div>
+    <button onclick="show('journey')">Start Our Journey 🌙</button>
 </section>
 
-<section>
-    <button onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'});">
-        Start the Journey 🌙
-    </button>
+<!-- Journey -->
+<section id="journey">
+    <h2>Our Beautiful Story 🌌</h2>
+    <div class="card">Kuch log achanak zindagi me aate hain aur sab kuch badal dete hain.</div>
+    <div class="card">Tumhara hona ek sukoon hai — bina wajah, bina shart.</div>
+    <div class="card">Har baat tumse kehna aasaan lagta hai.</div>
+    <button onclick="show('shayari')">Next: Shayari ✨</button>
 </section>
 
-<section id="story">
-    <h2>Our Beautiful Story</h2>
-    <div class="card">
-        Us raat se jab hum mile the…  
-        laga – zindagi me kuch khaas aa gaya.  
-        Tumhari hasi… tumhari baatein…  
-        sab yaadein dil me hamesha jagti rahengi.
-    </div>
-</section>
-
+<!-- Shayari -->
 <section id="shayari">
     <h2>Loved Shayari for You 💌</h2>
-    <div class="card">
-        “Tum meri pehli soch ho,<br>
-        Tum meri aakhri dua ho.”
-    </div>
-    <div class="card">
-        “Tum ho toh har pal rangin hai…<br>
-        Tumhare bina sab adhura hai.”
-    </div>
+    <div class="card">“Tumhari hasi meri sabse pyaari aadat ban chuki hai.”</div>
+    <div class="card">“Agar tum saath ho, toh har din ek festival hai.”</div>
+    <div class="card">“Main lafzon mein kamzor hoon, par mehsoos tumhe dil se karta hoon.”</div>
+    <button onclick="show('memories')">Next: Memories 📸</button>
 </section>
 
+<!-- Memories -->
 <section id="memories">
-    <h2>Memories 📸</h2>
-    <div class="card">
-        (Yahan photos add kar sakte ho — bas image links paste kar dena)
-    </div>
+    <h2>Little Moments 💞</h2>
+    <div class="card">(Yahan tum photos add kar sakte ho — bas image links paste kar dena)</div>
+    <div class="card gallery"><img src="https://via.placeholder.com/200"><img src="https://via.placeholder.com/200"><img src="https://via.placeholder.com/200"></div>
+    <button onclick="show('secret')">Next: Secret ❤️</button>
 </section>
 
+<!-- Secret -->
 <section id="secret">
-    <button onclick="revealSecret()">Open Secret ♥️</button>
+    <h2>Ek Chhupa Hua Raaz 🔐</h2>
+    <button onclick="revealSecret()">Open My Heart ♥️</button>
     <div id="secretText" class="card" style="display:none;">
-        Prachi… <br>
-        Tumhare bina har gaana adhoora lagta hai…  
-        Har pal tumhare naam ka lagta hai. 💞
+        Prachi…<br>
+        Tum meri zindagi ka wo hissa ho jiske bina sab adhoora lagta hai.<br>
+        Tum ho toh sab kuch hai 💖
     </div>
+    <button onclick="show('finale')">Next: Finale 🎇</button>
 </section>
 
+<!-- Finale -->
 <section id="finale">
     <div class="card">
         <h2>Happy New Year 2026 🎆</h2>
-        Tumhari har khushi meri dua hai…  
+        Tumhari har khushi meri dua hai…<br>
         2026 tumhare liye pyaar, success aur smiles se bhara ho 🌟
     </div>
 </section>
 
 <script>
+// Section navigation
+function show(id){
+    document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+
+// Reveal secret text
 function revealSecret(){
     document.getElementById("secretText").style.display = "block";
 }
+
+// Floating hearts
+setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤️";
+    h.style.left=Math.random()*100+"vw";
+    h.style.fontSize=(15+Math.random()*20)+"px";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+},700);
 </script>
 
 </body>
