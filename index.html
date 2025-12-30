@@ -6,8 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-
-/* ================= BASE ================= */
 * {
     margin: 0;
     padding: 0;
@@ -16,9 +14,7 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
     font-family: 'Segoe UI', sans-serif;
@@ -27,7 +23,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 header {
     text-align: center;
     padding: 20px;
@@ -35,7 +31,7 @@ header {
     background: linear-gradient(to right, #201a3b, #3b1a40);
 }
 
-/* ================= SECTION ================= */
+/* SECTIONS */
 section {
     padding: 20px;
     text-align: center;
@@ -50,7 +46,7 @@ section {
     box-shadow: 0 0 20px rgba(255,105,180,0.4);
 }
 
-/* ================= BUTTON ================= */
+/* BUTTON */
 button {
     background: #ff2e63;
     color: white;
@@ -70,18 +66,16 @@ button:active {
     transform: scale(0.96);
 }
 
-/* ================= HEART BEAT ================= */
+/* HEART BEAT */
 @keyframes beat {
     0%,100% { transform: scale(1); }
     50% { transform: scale(1.1); }
 }
-
 .heartbeat {
-    display: inline-block;
     animation: beat 1.2s infinite;
 }
 
-/* ================= FLOATING HEARTS ================= */
+/* FLOATING HEARTS */
 .emoji-heart {
     position: fixed;
     bottom: -30px;
@@ -95,7 +89,7 @@ button:active {
     to { transform: translateY(-850px); opacity: 0; }
 }
 
-/* ================= PETALS ================= */
+/* PETALS */
 .petal {
     position: fixed;
     top: -40px;
@@ -110,7 +104,7 @@ button:active {
     to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }
 
-/* ================= CLICK HEART ================= */
+/* CLICK HEART */
 .click-heart {
     position: fixed;
     font-size: 26px;
@@ -123,22 +117,20 @@ button:active {
     to { transform: scale(2) translateY(-60px); opacity: 0; }
 }
 
-/* ================= VIDEO ================= */
+/* VIDEO */
 iframe {
     width: 100%;
     height: 220px;
-    border: none;
     border-radius: 18px;
+    border: none;
 }
 
-/* ================= MOBILE OPTIMIZATION ================= */
+/* MOBILE */
 @media (max-width: 480px) {
     header { font-size: 22px; }
-    .card { font-size: 16px; padding: 18px; }
-    button { font-size: 16px; }
+    .card { font-size: 16px; }
     iframe { height: 200px; }
 }
-
 </style>
 </head>
 
@@ -146,12 +138,18 @@ iframe {
 
 <header>✨ Special New Year for Prachi ✨</header>
 
-<!-- Music -->
+<!-- VIDEO -->
 <section>
-<iframe src="https://www.youtube.com/embed/rBiblCpTw7s?autoplay=1&mute=1&loop=1&playlist=rBiblCpTw7s&controls=0"></iframe>
+    <iframe id="ytPlayer"
+        src="https://www.youtube.com/embed/rBiblCpTw7s?enablejsapi=1&controls=0&rel=0"
+        allow="autoplay; encrypted-media">
+    </iframe>
+
+    <br><br>
+    <button onclick="playWithSound()">▶ Tap to Play with Sound</button>
 </section>
 
-<!-- Intro -->
+<!-- INTRO -->
 <section>
     <div class="card">
         <p id="typeText"></p>
@@ -164,16 +162,15 @@ iframe {
     </button>
 </section>
 
-<!-- Image -->
+<!-- IMAGE -->
 <section>
     <h2 class="heartbeat">Meri Muskan 📸</h2>
     <div class="card">
-        <img src="https://img.sanishtech.com/u/f3407ddad054722d5914abb88bc109a2.png"
-             style="width:100%; border-radius:18px;">
+        <img src="https://img.sanishtech.com/u/f3407ddad054722d5914abb88bc109a2.png" style="width:100%; border-radius:18px;">
     </div>
 </section>
 
-<!-- Story -->
+<!-- STORY -->
 <section id="story">
     <h2>26 mei saans lene ka kiraya ➡️</h2>
     <div class="card">
@@ -181,7 +178,7 @@ iframe {
     </div>
 </section>
 
-<!-- Secret -->
+<!-- SECRET -->
 <section>
     <button onclick="revealSecret()">Open Secret ♥️</button>
     <div id="secretText" class="card" style="display:none;">
@@ -189,7 +186,7 @@ iframe {
     </div>
 </section>
 
-<!-- Finale -->
+<!-- FINAL -->
 <section>
     <div class="card">
         <h2>Happy New Year 2026 🎆</h2>
@@ -198,18 +195,17 @@ iframe {
     </div>
 </section>
 
-<!-- Floating Hearts -->
+<!-- FLOATING -->
 <span class="emoji-heart" style="left:10%; animation-delay:0s;">💗</span>
 <span class="emoji-heart" style="left:45%; animation-delay:3s;">💖</span>
 <span class="emoji-heart" style="left:80%; animation-delay:5s;">💝</span>
 
-<!-- Petals -->
 <span class="petal" style="left:15%; animation-duration:8s;">🌸</span>
 <span class="petal" style="left:45%; animation-duration:9s;">🌸</span>
 <span class="petal" style="left:75%; animation-duration:7s;">🌸</span>
 
 <script>
-/* TYPE WRITER */
+/* TYPEWRITER */
 const text = `Our Grand 2026 begins, My Love ❤️
 Bas khush rehna aur aise hi smile karti rehna 😊
 Tumhari smile hi kaafi hai saal ko perfect banane ke liye 😌💫`;
@@ -218,29 +214,34 @@ let i = 0;
 function typeWriter() {
     if (i < text.length) {
         document.getElementById("typeText").innerHTML += 
-            text[i] === "\n" ? "<br>" : text[i];
+        text[i] === "\n" ? "<br>" : text[i];
         i++;
         setTimeout(typeWriter, 45);
     }
 }
 typeWriter();
 
+/* SOUND PLAY */
+function playWithSound() {
+    const iframe = document.getElementById("ytPlayer");
+    iframe.src = "https://www.youtube.com/embed/rBiblCpTw7s?autoplay=1&controls=0&rel=0";
+}
+
 /* SECRET */
 function revealSecret() {
     document.getElementById("secretText").style.display = "block";
 }
 
-/* CLICK HEARTS (MOBILE FRIENDLY) */
+/* TOUCH HEARTS */
 document.addEventListener("touchstart", function(e) {
-    const touch = e.touches[0];
+    const t = e.touches[0];
     const hearts = ["💖","💗","💘","💝","❤️"];
-
     const heart = document.createElement("div");
-    heart.className = "click-heart";
-    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
 
-    heart.style.left = touch.clientX + "px";
-    heart.style.top = touch.clientY + "px";
+    heart.className = "click-heart";
+    heart.innerHTML = hearts[Math.floor(Math.random()*hearts.length)];
+    heart.style.left = t.clientX + "px";
+    heart.style.top = t.clientY + "px";
 
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 1000);
@@ -249,6 +250,7 @@ document.addEventListener("touchstart", function(e) {
 
 </body>
 </html>
+
 
 
 
