@@ -6,81 +6,96 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-/* Basic Styles */
-body, html{
-    margin:0; padding:0;
-    width:100%; height:100%;
-    font-family:'Segoe UI',sans-serif;
-    background:#090417;
-    color:white;
-}
-header{
-    text-align:center;
-    padding:20px;
-    font-size:28px;
-    background:linear-gradient(to right, #201a3b, #3b1a40);
-}
-section{
-    padding:15px;
-}
-button{
-    background:#ff2e63;
-    color:white;
-    border:none;
-    padding:12px 30px;
-    font-size:18px;
-    border-radius:30px;
-    margin:10px auto;
-    display:block;
-    cursor:pointer;
-    transition: all 0.3s ease;
-}
-button:hover, button:active, button:focus{
-    box-shadow: 0 0 15px #ff2e63, 0 0 30px #ff2e63;
-    transform: scale(1.05);
+
+/* ================= BASE ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.card{
-    background:rgba(255,255,255,0.1);
-    padding:20px; margin:12px 0;
-    border-radius:20px;
-    font-size:18px;
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #090417;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ================= HEADER ================= */
+header {
+    text-align: center;
+    padding: 20px;
+    font-size: 26px;
+    background: linear-gradient(to right, #201a3b, #3b1a40);
+}
+
+/* ================= SECTION ================= */
+section {
+    padding: 20px;
+    text-align: center;
+}
+
+.card {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 18px;
+    font-size: 17px;
     box-shadow: 0 0 20px rgba(255,105,180,0.4);
 }
-iframe{
-    width:100%;
-    height:200px;
-    border:none;
-}
-@media (min-width:600px){
-    iframe{height:300px;}
+
+/* ================= BUTTON ================= */
+button {
+    background: #ff2e63;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    font-size: 17px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* Floating Emoji Hearts */
+button:hover {
+    box-shadow: 0 0 15px #ff2e63, 0 0 30px #ff2e63;
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+/* ================= HEART BEAT ================= */
+@keyframes beat {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.heartbeat {
+    display: inline-block;
+    animation: beat 1.2s infinite;
+}
+
+/* ================= FLOATING HEARTS ================= */
 .emoji-heart {
     position: fixed;
     bottom: -30px;
     font-size: 26px;
-    animation: floatEmoji 7s linear infinite;
+    animation: floatEmoji 9s ease-in-out infinite;
     opacity: 0.9;
 }
+
 @keyframes floatEmoji {
-    0% { transform: translateY(0); opacity:1; }
-    100% { transform: translateY(-750px); opacity:0; }
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-850px); opacity: 0; }
 }
 
-/* Heartbeat Heading */
-@keyframes beat {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-.heartbeat {
-  display:inline-block;
-  animation: beat 1.2s infinite;
-  transform-origin: center;
-}
-
-/* Falling Petals */
+/* ================= PETALS ================= */
 .petal {
     position: fixed;
     top: -40px;
@@ -89,10 +104,41 @@ iframe{
     animation: fallPetal linear infinite;
     pointer-events: none;
 }
+
 @keyframes fallPetal {
-    0% { transform: translateY(0) rotate(0deg); opacity:1; }
-    100% { transform: translateY(100vh) rotate(360deg); opacity:0; }
+    from { transform: translateY(0) rotate(0); }
+    to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }
+
+/* ================= CLICK HEART ================= */
+.click-heart {
+    position: fixed;
+    font-size: 26px;
+    pointer-events: none;
+    animation: pop 1s ease forwards;
+}
+
+@keyframes pop {
+    from { transform: scale(0.5); opacity: 1; }
+    to { transform: scale(2) translateY(-60px); opacity: 0; }
+}
+
+/* ================= VIDEO ================= */
+iframe {
+    width: 100%;
+    height: 220px;
+    border: none;
+    border-radius: 18px;
+}
+
+/* ================= MOBILE OPTIMIZATION ================= */
+@media (max-width: 480px) {
+    header { font-size: 22px; }
+    .card { font-size: 16px; padding: 18px; }
+    button { font-size: 16px; }
+    iframe { height: 200px; }
+}
+
 </style>
 </head>
 
@@ -100,55 +146,51 @@ iframe{
 
 <header>✨ Special New Year for Prachi ✨</header>
 
-<!-- YouTube Background Music -->
-<section id="music">
-    <iframe src="https://www.youtube.com/embed/rBiblCpTw7s?autoplay=1&loop=1&playlist=rBiblCpTw7s&controls=0&modestbranding=1&rel=0" allow="autoplay; encrypted-media"></iframe>
+<!-- Music -->
+<section>
+<iframe src="https://www.youtube.com/embed/rBiblCpTw7s?autoplay=1&mute=1&loop=1&playlist=rBiblCpTw7s&controls=0"></iframe>
 </section>
 
-<!-- Intro Message -->
-<section id="intro">
+<!-- Intro -->
+<section>
     <div class="card">
-        Our Grand 2026 begins, My Love ❤️<br>
-        Bas khush rehna aur aise hi smile karti rehna 😊<br>
-        Tumhari smile hi kaafi hai saal ko perfect banane ke liye 😌💫        
+        <p id="typeText"></p>
     </div>
 </section>
 
-<!-- Scroll Button -->
 <section>
-    <button onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'});">
+    <button onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})">
         Happy New Year, meri jaan! 🎉
     </button>
 </section>
 
-<!-- Memories / Photo -->
-<section id="memories">
+<!-- Image -->
+<section>
     <h2 class="heartbeat">Meri Muskan 📸</h2>
     <div class="card">
-        <img src="https://img.sanishtech.com/u/57d91bd955573994b00ee975999103ac.png" 
-             style="width:100%; border-radius:20px;">
+        <img src="https://img.sanishtech.com/u/f3407ddad054722d5914abb88bc109a2.png"
+             style="width:100%; border-radius:18px;">
     </div>
 </section>
 
-<!-- Story Section -->
+<!-- Story -->
 <section id="story">
-    <h2>26 mei saans lene ka kiraya➡️</h2>
+    <h2>26 mei saans lene ka kiraya ➡️</h2>
     <div class="card">
-        You’re my entangled particle — no matter the distance, my love for you is instantly real. 💞⚛️  
+        You’re my entangled particle — no matter the distance, my love for you is instantly real. 💞⚛️
     </div>
 </section>
 
-<!-- Secret Message -->
-<section id="secret">
+<!-- Secret -->
+<section>
     <button onclick="revealSecret()">Open Secret ♥️</button>
     <div id="secretText" class="card" style="display:none;">
-        Prachi… <br>
-        I love you ♥️
+        Prachi… <br>I love you ♥️
     </div>
 </section>
 
 <!-- Finale -->
-<section id="finale">
+<section>
     <div class="card">
         <h2>Happy New Year 2026 🎆</h2>
         Tumhari har khushi meri dua hai…<br>
@@ -156,24 +198,59 @@ iframe{
     </div>
 </section>
 
-<script>
-function revealSecret(){
-    document.getElementById("secretText").style.display = "block";
-}
-</script>
-
 <!-- Floating Hearts -->
 <span class="emoji-heart" style="left:10%; animation-delay:0s;">💗</span>
-<span class="emoji-heart" style="left:50%; animation-delay:4s;">💗</span>
-<span class="emoji-heart" style="left:90%; animation-delay:3s;">💗</span>
+<span class="emoji-heart" style="left:45%; animation-delay:3s;">💖</span>
+<span class="emoji-heart" style="left:80%; animation-delay:5s;">💝</span>
 
-<!-- Falling Petals -->
-<span class="petal" style="left:10%; animation-duration:8s;">🌸</span>
-<span class="petal" style="left:40%; animation-duration:9s;">🌸</span>
-<span class="petal" style="left:70%; animation-duration:8s;">🌸</span>
+<!-- Petals -->
+<span class="petal" style="left:15%; animation-duration:8s;">🌸</span>
+<span class="petal" style="left:45%; animation-duration:9s;">🌸</span>
+<span class="petal" style="left:75%; animation-duration:7s;">🌸</span>
+
+<script>
+/* TYPE WRITER */
+const text = `Our Grand 2026 begins, My Love ❤️
+Bas khush rehna aur aise hi smile karti rehna 😊
+Tumhari smile hi kaafi hai saal ko perfect banane ke liye 😌💫`;
+
+let i = 0;
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("typeText").innerHTML += 
+            text[i] === "\n" ? "<br>" : text[i];
+        i++;
+        setTimeout(typeWriter, 45);
+    }
+}
+typeWriter();
+
+/* SECRET */
+function revealSecret() {
+    document.getElementById("secretText").style.display = "block";
+}
+
+/* CLICK HEARTS (MOBILE FRIENDLY) */
+document.addEventListener("touchstart", function(e) {
+    const touch = e.touches[0];
+    const hearts = ["💖","💗","💘","💝","❤️"];
+
+    const heart = document.createElement("div");
+    heart.className = "click-heart";
+    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+
+    heart.style.left = touch.clientX + "px";
+    heart.style.top = touch.clientY + "px";
+
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 1000);
+});
+</script>
 
 </body>
 </html>
+
+
 
 
 
