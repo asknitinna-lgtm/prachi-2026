@@ -6,134 +6,142 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    user-select:none;
-    -webkit-tap-highlight-color:transparent;
+/* RESET & GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-html{ scroll-behavior:smooth; }
+html { scroll-behavior: smooth; }
 
-body{
-    font-family:'Segoe UI',sans-serif;
-    background:#090417;
-    color:white;
-    overflow-x:hidden;
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #090417;
+    color: white;
+    overflow-x: hidden;
 }
+
+/* HIDE MAIN CONTENT INITIALLY */
+#mainContent { display: none; }
+
+/* MUSIC BUTTON */
+#musicSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+button {
+    background: #ff2e63;
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+button:active { transform: scale(0.96); }
 
 /* HEADER */
-header{
-    text-align:center;
-    padding:20px;
-    font-size:26px;
-    background:linear-gradient(to right,#201a3b,#3b1a40);
+header {
+    text-align: center;
+    padding: 18px;
+    font-size: 26px;
+    background: linear-gradient(to right, #201a3b, #3b1a40);
 }
 
-/* SECTIONS */
-section{
-    padding:20px;
-    text-align:center;
+/* SECTIONS & CARDS */
+section { padding: 18px; text-align: center; }
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 18px;
+    margin: 15px 0;
+    border-radius: 18px;
+    font-size: 17px;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
 }
 
-.card{
-    background:rgba(255,255,255,0.1);
-    padding:20px;
-    margin:15px 0;
-    border-radius:18px;
-    font-size:17px;
-    box-shadow:0 0 20px rgba(255,105,180,0.4);
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 18px;
 }
-
-/* BUTTON */
-button{
-    background:#ff2e63;
-    color:white;
-    border:none;
-    padding:12px 28px;
-    font-size:17px;
-    border-radius:30px;
-    cursor:pointer;
-    transition:.3s;
-}
-button:active{ transform:scale(0.96); }
-
-/* HEART BEAT */
-@keyframes beat{
-    0%,100%{transform:scale(1);}
-    50%{transform:scale(1.1);}
-}
-.heartbeat{ animation:beat 1.2s infinite; }
 
 /* FLOATING HEARTS */
-.emoji-heart{
-    position:fixed;
-    bottom:-30px;
-    font-size:26px;
-    animation:floatEmoji 9s ease-in-out infinite;
-    opacity:.9;
+.emoji-heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 24px;
+    animation: floatEmoji 8s ease-in-out infinite;
+    opacity: 0.9;
 }
-@keyframes floatEmoji{
-    from{transform:translateY(0);}
-    to{transform:translateY(-850px);opacity:0;}
+
+@keyframes floatEmoji {
+    from { transform: translateY(0); }
+    to { transform: translateY(-80vh); opacity: 0; }
 }
 
 /* PETALS */
-.petal{
-    position:fixed;
-    top:-40px;
-    font-size:22px;
-    opacity:.8;
-    animation:fallPetal linear infinite;
+.petal {
+    position: fixed;
+    top: -40px;
+    font-size: 20px;
+    opacity: 0.8;
+    animation: fallPetal linear infinite;
 }
-@keyframes fallPetal{
-    from{transform:translateY(0) rotate(0);}
-    to{transform:translateY(100vh) rotate(360deg);opacity:0;}
+
+@keyframes fallPetal {
+    from { transform: translateY(0) rotate(0deg); }
+    to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }
 
 /* CLICK HEART */
-.click-heart{
-    position:fixed;
-    font-size:26px;
-    pointer-events:none;
-    animation:pop 1s ease forwards;
-}
-@keyframes pop{
-    from{transform:scale(.5);opacity:1;}
-    to{transform:scale(2) translateY(-60px);opacity:0;}
+.click-heart {
+    position: fixed;
+    font-size: 24px;
+    pointer-events: none;
+    animation: pop 1s ease forwards;
 }
 
-/* VIDEO */
-iframe{
-    width:100%;
-    height:220px;
-    border:none;
-    border-radius:18px;
+@keyframes pop {
+    from { transform: scale(0.5); opacity: 1; }
+    to { transform: scale(2) translateY(-60px); opacity: 0; }
 }
 
-/* MOBILE */
-@media(max-width:480px){
-    header{font-size:22px;}
-    .card{font-size:16px;}
-    iframe{height:200px;}
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 480px) {
+    header { font-size: 22px; padding: 15px; }
+    .card { font-size: 15px; padding: 15px; }
+    button { font-size: 16px; padding: 12px 24px; }
+    .emoji-heart { font-size: 20px; }
+    .petal { font-size: 18px; }
 }
 </style>
 </head>
-
 <body>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+    <source src="zehnaseeb-hasee-toh-phasee-320-kbps_oNznesJp.mp3" type="audio/mpeg">
+</audio>
+
+<!-- MUSIC BUTTON -->
+<section id="musicSection">
+    <button onclick="startMusic()">🎵 Play Music 🎵</button>
+</section>
+
+<!-- MAIN CONTENT -->
+<div id="mainContent">
 
 <header>✨ Special New Year for Prachi ✨</header>
 
-<!-- MUSIC -->
-<section>
-    <iframe id="ytPlayer"
-        src="https://www.youtube.com/embed/rBiblCpTw7s?enablejsapi=1&controls=0&rel=0"
-        allow="autoplay; encrypted-media">
-    </iframe>
-</section>
-
-<!-- TEXT -->
 <section>
     <div class="card">
         <p id="typeText"></p>
@@ -146,16 +154,13 @@ iframe{
     </button>
 </section>
 
-<!-- IMAGE -->
 <section>
-    <h2 class="heartbeat">Meri Muskan 📸</h2>
+    <h2>Meri Muskan 📸</h2>
     <div class="card">
-        <img src="https://img.sanishtech.com/u/f3407ddad054722d5914abb88bc109a2.png"
-             style="width:100%;border-radius:18px;">
+        <img src="https://img.sanishtech.com/u/f3407ddad054722d5914abb88bc109a2.png" alt="Prachi">
     </div>
 </section>
 
-<!-- STORY -->
 <section id="story">
     <h2>26 mei saans lene ka kiraya ➡️</h2>
     <div class="card">
@@ -163,7 +168,6 @@ iframe{
     </div>
 </section>
 
-<!-- SECRET -->
 <section>
     <button onclick="revealSecret()">Open Secret ♥️</button>
     <div id="secretText" class="card" style="display:none;">
@@ -171,7 +175,6 @@ iframe{
     </div>
 </section>
 
-<!-- FINAL -->
 <section>
     <div class="card">
         <h2>Happy New Year 2026 🎆</h2>
@@ -180,64 +183,91 @@ iframe{
     </div>
 </section>
 
-<!-- FLOATING DECOR -->
-<span class="emoji-heart" style="left:10%;animation-delay:0s;">💗</span>
-<span class="emoji-heart" style="left:45%;animation-delay:3s;">💖</span>
-<span class="emoji-heart" style="left:80%;animation-delay:5s;">💝</span>
+<!-- FLOATING HEARTS & PETALS -->
+<script>
+const hearts = [];
+for(let i=0; i<5; i++){
+    const h = document.createElement('span');
+    h.className = 'emoji-heart';
+    h.style.left = (Math.random()*90)+'%';
+    h.style.animationDelay = (Math.random()*5)+'s';
+    h.innerText = ['💖','💗','💘','💝','❤️'][Math.floor(Math.random()*5)];
+    document.body.appendChild(h);
+    hearts.push(h);
+}
 
-<span class="petal" style="left:15%;animation-duration:8s;">🌸</span>
-<span class="petal" style="left:45%;animation-duration:9s;">🌸</span>
-<span class="petal" style="left:75%;animation-duration:7s;">🌸</span>
+const petals = [];
+for(let i=0; i<5; i++){
+    const p = document.createElement('span');
+    p.className = 'petal';
+    p.style.left = (Math.random()*90)+'%';
+    p.style.animationDuration = (7 + Math.random()*3)+'s';
+    p.innerText = '🌸';
+    document.body.appendChild(p);
+    petals.push(p);
+}
+</script>
+
+</div>
 
 <script>
-/* TYPE EFFECT */
-const text = `Our Grand 2026 begins, My Love ❤️
+// TYPEWRITER
+const typeText = `Our Grand 2026 begins, My Love ❤️
 Bas khush rehna aur aise hi smile karti rehna 😊
 Tumhari smile hi kaafi hai saal ko perfect banane ke liye 😌💫`;
 
-let i = 0;
+let index = 0;
 function typeWriter(){
-    if(i < text.length){
+    if(index < typeText.length){
         document.getElementById("typeText").innerHTML +=
-        text[i] === "\n" ? "<br>" : text[i];
-        i++;
+        typeText[index] === "\n" ? "<br>" : typeText[index];
+        index++;
         setTimeout(typeWriter, 45);
     }
 }
-typeWriter();
 
-/* MUSIC ON FIRST TOUCH */
+// MUSIC CONTROL
+const music = document.getElementById("bgMusic");
 let musicPlayed = false;
-function playWithSound(){
-    const iframe = document.getElementById("ytPlayer");
-    iframe.src = "https://www.youtube.com/embed/rBiblCpTw7s?autoplay=1&controls=0&rel=0";
+
+function startMusic(){
+    if(musicPlayed) return;
+    musicPlayed = true;
+    music.volume = 0;
+    music.play();
+
+    let vol = 0;
+    const fade = setInterval(()=>{
+        if(vol < 0.8){
+            vol += 0.05;
+            music.volume = vol;
+        } else clearInterval(fade);
+    }, 200);
+
+    document.getElementById("mainContent").style.display = "block";
+    document.getElementById("musicSection").style.display = "none";
+
+    typeWriter();
 }
 
-document.addEventListener("touchstart", function(){
-    if(!musicPlayed){
-        playWithSound();
-        musicPlayed = true;
-    }
-});
-
-/* SECRET */
+// SECRET
 function revealSecret(){
     document.getElementById("secretText").style.display="block";
 }
 
-/* HEART TOUCH */
-document.addEventListener("touchstart", function(e){
+// TOUCH HEART
+document.addEventListener("touchstart", e => {
     const t = e.touches[0];
-    const hearts=["💖","💗","💘","💝","❤️"];
-    const h=document.createElement("div");
+    const heartsArr = ["💖","💗","💘","💝","❤️"];
+    const h = document.createElement("div");
 
-    h.className="click-heart";
-    h.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
-    h.style.left=t.clientX+"px";
-    h.style.top=t.clientY+"px";
+    h.className = "click-heart";
+    h.innerHTML = heartsArr[Math.floor(Math.random()*heartsArr.length)];
+    h.style.left = t.clientX + "px";
+    h.style.top = t.clientY + "px";
 
     document.body.appendChild(h);
-    setTimeout(()=>h.remove(),1000);
+    setTimeout(() => h.remove(), 1000);
 });
 </script>
 
