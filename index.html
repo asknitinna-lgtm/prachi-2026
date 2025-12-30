@@ -6,130 +6,117 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    user-select:none;
+    -webkit-tap-highlight-color:transparent;
 }
 
-html { scroll-behavior: smooth; }
+html{ scroll-behavior:smooth; }
 
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #090417;
-    color: white;
-    overflow-x: hidden;
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:#090417;
+    color:white;
+    overflow-x:hidden;
 }
 
 /* HEADER */
-header {
-    text-align: center;
-    padding: 20px;
-    font-size: 26px;
-    background: linear-gradient(to right, #201a3b, #3b1a40);
+header{
+    text-align:center;
+    padding:20px;
+    font-size:26px;
+    background:linear-gradient(to right,#201a3b,#3b1a40);
 }
 
 /* SECTIONS */
-section {
-    padding: 20px;
-    text-align: center;
+section{
+    padding:20px;
+    text-align:center;
 }
 
-.card {
-    background: rgba(255,255,255,0.1);
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 18px;
-    font-size: 17px;
-    box-shadow: 0 0 20px rgba(255,105,180,0.4);
+.card{
+    background:rgba(255,255,255,0.1);
+    padding:20px;
+    margin:15px 0;
+    border-radius:18px;
+    font-size:17px;
+    box-shadow:0 0 20px rgba(255,105,180,0.4);
 }
 
 /* BUTTON */
-button {
-    background: #ff2e63;
-    color: white;
-    border: none;
-    padding: 12px 28px;
-    font-size: 17px;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: 0.3s;
+button{
+    background:#ff2e63;
+    color:white;
+    border:none;
+    padding:12px 28px;
+    font-size:17px;
+    border-radius:30px;
+    cursor:pointer;
+    transition:.3s;
 }
-
-button:hover {
-    box-shadow: 0 0 15px #ff2e63, 0 0 30px #ff2e63;
-}
-
-button:active {
-    transform: scale(0.96);
-}
+button:active{ transform:scale(0.96); }
 
 /* HEART BEAT */
-@keyframes beat {
-    0%,100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+@keyframes beat{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.1);}
 }
-.heartbeat {
-    animation: beat 1.2s infinite;
-}
+.heartbeat{ animation:beat 1.2s infinite; }
 
 /* FLOATING HEARTS */
-.emoji-heart {
-    position: fixed;
-    bottom: -30px;
-    font-size: 26px;
-    animation: floatEmoji 9s ease-in-out infinite;
-    opacity: 0.9;
+.emoji-heart{
+    position:fixed;
+    bottom:-30px;
+    font-size:26px;
+    animation:floatEmoji 9s ease-in-out infinite;
+    opacity:.9;
 }
-
-@keyframes floatEmoji {
-    from { transform: translateY(0); opacity: 1; }
-    to { transform: translateY(-850px); opacity: 0; }
+@keyframes floatEmoji{
+    from{transform:translateY(0);}
+    to{transform:translateY(-850px);opacity:0;}
 }
 
 /* PETALS */
-.petal {
-    position: fixed;
-    top: -40px;
-    font-size: 22px;
-    opacity: 0.8;
-    animation: fallPetal linear infinite;
-    pointer-events: none;
+.petal{
+    position:fixed;
+    top:-40px;
+    font-size:22px;
+    opacity:.8;
+    animation:fallPetal linear infinite;
 }
-
-@keyframes fallPetal {
-    from { transform: translateY(0) rotate(0); }
-    to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+@keyframes fallPetal{
+    from{transform:translateY(0) rotate(0);}
+    to{transform:translateY(100vh) rotate(360deg);opacity:0;}
 }
 
 /* CLICK HEART */
-.click-heart {
-    position: fixed;
-    font-size: 26px;
-    pointer-events: none;
-    animation: pop 1s ease forwards;
+.click-heart{
+    position:fixed;
+    font-size:26px;
+    pointer-events:none;
+    animation:pop 1s ease forwards;
 }
-
-@keyframes pop {
-    from { transform: scale(0.5); opacity: 1; }
-    to { transform: scale(2) translateY(-60px); opacity: 0; }
+@keyframes pop{
+    from{transform:scale(.5);opacity:1;}
+    to{transform:scale(2) translateY(-60px);opacity:0;}
 }
 
 /* VIDEO */
-iframe {
-    width: 100%;
-    height: 220px;
-    border-radius: 18px;
-    border: none;
+iframe{
+    width:100%;
+    height:220px;
+    border:none;
+    border-radius:18px;
 }
 
 /* MOBILE */
-@media (max-width: 480px) {
-    header { font-size: 22px; }
-    .card { font-size: 16px; }
-    iframe { height: 200px; }
+@media(max-width:480px){
+    header{font-size:22px;}
+    .card{font-size:16px;}
+    iframe{height:200px;}
 }
 </style>
 </head>
@@ -138,18 +125,15 @@ iframe {
 
 <header>✨ Special New Year for Prachi ✨</header>
 
-<!-- VIDEO -->
+<!-- MUSIC -->
 <section>
     <iframe id="ytPlayer"
         src="https://www.youtube.com/embed/rBiblCpTw7s?enablejsapi=1&controls=0&rel=0"
         allow="autoplay; encrypted-media">
     </iframe>
-
-    <br><br>
-    <button onclick="playWithSound()">▶ Tap to Play with Sound</button>
 </section>
 
-<!-- INTRO -->
+<!-- TEXT -->
 <section>
     <div class="card">
         <p id="typeText"></p>
@@ -158,7 +142,7 @@ iframe {
 
 <section>
     <button onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})">
-        Happy New Year, meri jaan! 🎉
+        Happy New Year, meri jaan 🎉
     </button>
 </section>
 
@@ -166,7 +150,8 @@ iframe {
 <section>
     <h2 class="heartbeat">Meri Muskan 📸</h2>
     <div class="card">
-        <img src="https://img.sanishtech.com/u/f3407ddad054722d5914abb88bc109a2.png" style="width:100%; border-radius:18px;">
+        <img src="https://img.sanishtech.com/u/f3407ddad054722d5914abb88bc109a2.png"
+             style="width:100%;border-radius:18px;">
     </div>
 </section>
 
@@ -195,25 +180,25 @@ iframe {
     </div>
 </section>
 
-<!-- FLOATING -->
-<span class="emoji-heart" style="left:10%; animation-delay:0s;">💗</span>
-<span class="emoji-heart" style="left:45%; animation-delay:3s;">💖</span>
-<span class="emoji-heart" style="left:80%; animation-delay:5s;">💝</span>
+<!-- FLOATING DECOR -->
+<span class="emoji-heart" style="left:10%;animation-delay:0s;">💗</span>
+<span class="emoji-heart" style="left:45%;animation-delay:3s;">💖</span>
+<span class="emoji-heart" style="left:80%;animation-delay:5s;">💝</span>
 
-<span class="petal" style="left:15%; animation-duration:8s;">🌸</span>
-<span class="petal" style="left:45%; animation-duration:9s;">🌸</span>
-<span class="petal" style="left:75%; animation-duration:7s;">🌸</span>
+<span class="petal" style="left:15%;animation-duration:8s;">🌸</span>
+<span class="petal" style="left:45%;animation-duration:9s;">🌸</span>
+<span class="petal" style="left:75%;animation-duration:7s;">🌸</span>
 
 <script>
-/* TYPEWRITER */
+/* TYPE EFFECT */
 const text = `Our Grand 2026 begins, My Love ❤️
 Bas khush rehna aur aise hi smile karti rehna 😊
 Tumhari smile hi kaafi hai saal ko perfect banane ke liye 😌💫`;
 
 let i = 0;
-function typeWriter() {
-    if (i < text.length) {
-        document.getElementById("typeText").innerHTML += 
+function typeWriter(){
+    if(i < text.length){
+        document.getElementById("typeText").innerHTML +=
         text[i] === "\n" ? "<br>" : text[i];
         i++;
         setTimeout(typeWriter, 45);
@@ -221,35 +206,44 @@ function typeWriter() {
 }
 typeWriter();
 
-/* SOUND PLAY */
-function playWithSound() {
+/* MUSIC ON FIRST TOUCH */
+let musicPlayed = false;
+function playWithSound(){
     const iframe = document.getElementById("ytPlayer");
     iframe.src = "https://www.youtube.com/embed/rBiblCpTw7s?autoplay=1&controls=0&rel=0";
 }
 
+document.addEventListener("touchstart", function(){
+    if(!musicPlayed){
+        playWithSound();
+        musicPlayed = true;
+    }
+});
+
 /* SECRET */
-function revealSecret() {
-    document.getElementById("secretText").style.display = "block";
+function revealSecret(){
+    document.getElementById("secretText").style.display="block";
 }
 
-/* TOUCH HEARTS */
-document.addEventListener("touchstart", function(e) {
+/* HEART TOUCH */
+document.addEventListener("touchstart", function(e){
     const t = e.touches[0];
-    const hearts = ["💖","💗","💘","💝","❤️"];
-    const heart = document.createElement("div");
+    const hearts=["💖","💗","💘","💝","❤️"];
+    const h=document.createElement("div");
 
-    heart.className = "click-heart";
-    heart.innerHTML = hearts[Math.floor(Math.random()*hearts.length)];
-    heart.style.left = t.clientX + "px";
-    heart.style.top = t.clientY + "px";
+    h.className="click-heart";
+    h.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
+    h.style.left=t.clientX+"px";
+    h.style.top=t.clientY+"px";
 
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 1000);
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),1000);
 });
 </script>
 
 </body>
 </html>
+
 
 
 
