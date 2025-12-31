@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-/* RESET & GLOBAL */
+/* ================= RESET ================= */
 * {
     margin: 0;
     padding: 0;
@@ -15,7 +15,9 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     font-family: 'Segoe UI', sans-serif;
@@ -24,10 +26,12 @@ body {
     overflow-x: hidden;
 }
 
-/* HIDE MAIN CONTENT INITIALLY */
-#mainContent { display: none; }
+/* ================= MAIN VISIBILITY ================= */
+#mainContent {
+    display: none;
+}
 
-/* MUSIC BUTTON */
+/* ================= MUSIC SCREEN ================= */
 #musicSection {
     display: flex;
     justify-content: center;
@@ -35,6 +39,7 @@ body {
     height: 100vh;
 }
 
+/* ================= BUTTON ================= */
 button {
     background: #ff2e63;
     color: white;
@@ -43,12 +48,14 @@ button {
     font-size: 18px;
     border-radius: 30px;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.2s ease;
 }
 
-button:active { transform: scale(0.96); }
+button:active {
+    transform: scale(0.95);
+}
 
-/* HEADER */
+/* ================= HEADER ================= */
 header {
     text-align: center;
     padding: 18px;
@@ -56,8 +63,11 @@ header {
     background: linear-gradient(to right, #201a3b, #3b1a40);
 }
 
-/* SECTIONS & CARDS */
-section { padding: 18px; text-align: center; }
+/* ================= CONTENT ================= */
+section {
+    padding: 18px;
+    text-align: center;
+}
 
 .card {
     background: rgba(255, 255, 255, 0.1);
@@ -65,30 +75,30 @@ section { padding: 18px; text-align: center; }
     margin: 15px 0;
     border-radius: 18px;
     font-size: 17px;
-    box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.35);
 }
 
 .card img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    max-width: 320px;
     border-radius: 18px;
 }
 
-/* FLOATING HEARTS */
+/* ================= FLOATING HEARTS ================= */
 .emoji-heart {
     position: fixed;
     bottom: -20px;
     font-size: 24px;
-    animation: floatEmoji 8s ease-in-out infinite;
+    animation: floatEmoji 8s linear infinite;
     opacity: 0.9;
 }
 
 @keyframes floatEmoji {
     from { transform: translateY(0); }
-    to { transform: translateY(-80vh); opacity: 0; }
+    to { transform: translateY(-85vh); opacity: 0; }
 }
 
-/* PETALS */
+/* ================= PETALS ================= */
 .petal {
     position: fixed;
     top: -40px;
@@ -102,7 +112,7 @@ section { padding: 18px; text-align: center; }
     to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }
 
-/* CLICK HEART */
+/* ================= CLICK HEART ================= */
 .click-heart {
     position: fixed;
     font-size: 24px;
@@ -111,33 +121,32 @@ section { padding: 18px; text-align: center; }
 }
 
 @keyframes pop {
-    from { transform: scale(0.5); opacity: 1; }
+    from { transform: scale(0.6); opacity: 1; }
     to { transform: scale(2) translateY(-60px); opacity: 0; }
 }
 
-/* MOBILE RESPONSIVENESS */
+/* ================= MOBILE ================= */
 @media (max-width: 480px) {
-    header { font-size: 22px; padding: 15px; }
-    .card { font-size: 15px; padding: 15px; }
+    header { font-size: 22px; }
+    .card { font-size: 15px; }
     button { font-size: 16px; padding: 12px 24px; }
-    .emoji-heart { font-size: 20px; }
-    .petal { font-size: 18px; }
 }
 </style>
 </head>
+
 <body>
 
-<!-- MUSIC -->
-<audio id="bgMusic" loop>
+<!-- 🎵 MUSIC -->
+<audio id="bgMusic" preload="auto" loop>
     <source src="./zehnaseeb-hasee-toh-phasee-320-kbps_oNznesJp.mp3" type="audio/mpeg">
 </audio>
 
-<!-- MUSIC BUTTON -->
+<!-- 🎶 START SCREEN -->
 <section id="musicSection">
     <button onclick="startMusic()">🎵 Play Music 🎵</button>
 </section>
 
-<!-- MAIN CONTENT -->
+<!-- 🌸 MAIN CONTENT -->
 <div id="mainContent">
 
 <header>✨ Special New Year for Prachi ✨</header>
@@ -183,62 +192,58 @@ section { padding: 18px; text-align: center; }
     </div>
 </section>
 
-<!-- FLOATING HEARTS & PETALS -->
-<script>
-const hearts = [];
-for(let i=0; i<5; i++){
-    const h = document.createElement('span');
-    h.className = 'emoji-heart';
-    h.style.left = (Math.random()*90)+'%';
-    h.style.animationDelay = (Math.random()*5)+'s';
-    h.innerText = ['💖','💗','❤️'][Math.floor(Math.random()*5)];
-    document.body.appendChild(h);
-    hearts.push(h);
-}
-
-const petals = [];
-for(let i=0; i<5; i++){
-    const p = document.createElement('span');
-    p.className = 'petal';
-    p.style.left = (Math.random()*90)+'%';
-    p.style.animationDuration = (7 + Math.random()*3)+'s';
-    p.innerText = '🌸';
-    document.body.appendChild(p);
-    petals.push(p);
-}
-</script>
-
 </div>
 
 <script>
+// FLOATING HEARTS
+for (let i = 0; i < 6; i++) {
+    const h = document.createElement("span");
+    h.className = "emoji-heart";
+    h.innerText = ["💖","💗","💘","💝","❤️"][Math.floor(Math.random()*5)];
+    h.style.left = Math.random() * 90 + "%";
+    h.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(h);
+}
+
+// PETALS
+for (let i = 0; i < 6; i++) {
+    const p = document.createElement("span");
+    p.className = "petal";
+    p.innerText = "🌸";
+    p.style.left = Math.random() * 90 + "%";
+    p.style.animationDuration = (7 + Math.random() * 3) + "s";
+    document.body.appendChild(p);
+}
+
 // TYPEWRITER
-const typeText = `Our Grand 2026 begins, My Love ❤️
+const text = `Our Grand 2026 begins, My Love ❤️
 Bas khush rehna aur aise hi smile karti rehna 😊
 Tumhari smile hi kaafi hai saal ko perfect banane ke liye 😌💫`;
 
-let index = 0;
-function typeWriter(){
-    if(index < typeText.length){
+let i = 0;
+function typeWriter() {
+    if (i < text.length) {
         document.getElementById("typeText").innerHTML +=
-        typeText[index] === "\n" ? "<br>" : typeText[index];
-        index++;
+            text[i] === "\n" ? "<br>" : text[i];
+        i++;
         setTimeout(typeWriter, 45);
     }
 }
 
-// MUSIC CONTROL
+// MUSIC START
 const music = document.getElementById("bgMusic");
-let musicPlayed = false;
+let started = false;
 
-function startMusic(){
-    if(musicPlayed) return;
-    musicPlayed = true;
+function startMusic() {
+    if (started) return;
+    started = true;
+
     music.volume = 0;
     music.play();
 
     let vol = 0;
-    const fade = setInterval(()=>{
-        if(vol < 0.8){
+    const fade = setInterval(() => {
+        if (vol < 0.8) {
             vol += 0.05;
             music.volume = vol;
         } else clearInterval(fade);
@@ -251,28 +256,25 @@ function startMusic(){
 }
 
 // SECRET
-function revealSecret(){
-    document.getElementById("secretText").style.display="block";
+function revealSecret() {
+    document.getElementById("secretText").style.display = "block";
 }
 
-// TOUCH HEART
+// TOUCH HEARTS
 document.addEventListener("touchstart", e => {
-    const t = e.touches[0];
-    const heartsArr = ["💗"];
-    const h = document.createElement("div");
-
-    h.className = "click-heart";
-    h.innerHTML = heartsArr[Math.floor(Math.random()*heartsArr.length)];
-    h.style.left = t.clientX + "px";
-    h.style.top = t.clientY + "px";
-
-    document.body.appendChild(h);
-    setTimeout(() => h.remove(), 1000);
+    const heart = document.createElement("div");
+    heart.className = "click-heart";
+    heart.innerHTML = ["💖","💗","💘","💝","❤️"][Math.floor(Math.random()*5)];
+    heart.style.left = e.touches[0].clientX + "px";
+    heart.style.top = e.touches[0].clientY + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 1000);
 });
 </script>
 
 </body>
 </html>
+
 
 
 
