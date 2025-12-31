@@ -191,7 +191,7 @@ for(let i=0; i<5; i++){
     h.className = 'emoji-heart';
     h.style.left = (Math.random()*90)+'%';
     h.style.animationDelay = (Math.random()*5)+'s';
-    h.innerText = ['💖','💗','💘','💝','❤️'][Math.floor(Math.random()*5)];
+    h.innerText = ['💖','💗','❤️'][Math.floor(Math.random()*5)];
     document.body.appendChild(h);
     hearts.push(h);
 }
@@ -258,7 +258,7 @@ function revealSecret(){
 // TOUCH HEART
 document.addEventListener("touchstart", e => {
     const t = e.touches[0];
-    const heartsArr = ["💖","💗","💘","💝","❤️"];
+    const heartsArr = ["💗"];
     const h = document.createElement("div");
 
     h.className = "click-heart";
@@ -273,6 +273,7 @@ document.addEventListener("touchstart", e => {
 
 </body>
 </html>
+
 
 
 
